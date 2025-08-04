@@ -15,7 +15,7 @@
         "name": "Header Test",
         "settings": {
           "mobile_menu_title": "Menu Tests Ones",
-          "menu": "backup-menu"
+          "menu": "main-menu"
         }
       }
     },
