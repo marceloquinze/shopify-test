@@ -12,9 +12,9 @@
     "sections": {
       "header": {
         "type": "header",
-        "name": "Header Test",
+        "name": "Header",
         "settings": {
-          "mobile_menu_title": "Menu Tests Ones",
+          "mobile_menu_title": "Menu Test",
           "menu": "main-menu"
         }
       }
