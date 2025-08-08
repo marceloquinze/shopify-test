@@ -113,4 +113,23 @@
       </div>
   </div>  
 </div>
-<p>Test</p>
+{% schema %}
+  {
+    "name": "Headers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mobile_menu_title",
+        "label": "Title",
+        "default": "Menu",
+        "info": "This is for the mobile menu window"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Header Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
