@@ -56,10 +56,12 @@
           {% render 'icon-shopping-bag' %}
         </a>
 
+        {% if shop.customer_accounts_enabled %}
         <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">
           {% render 'icon-user' %}
         </a>
         <a href="{{ routes.account_register_url }}" class="text-base text-gray-500 hover:text-gray-900">Register</a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -113,9 +115,14 @@
       </div>
   </div>  
 </div>
+<!-- this defines or describes a section 
+- name: section name
+- settings: fields inside a section
+- once you create a setting, it won't be updated, unless you push it to repo
+-->
 {% schema %}
   {
-    "name": "Headers",
+    "name": "Navigational Bar",
     "settings": [
       {
         "type": "text",
