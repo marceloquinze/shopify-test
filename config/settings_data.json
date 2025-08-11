@@ -14,7 +14,7 @@
         "type": "header",
         "name": "Header",
         "settings": {
-          "mobile_menu_title": "",
+          "mobile_menu_title": "Site title",
           "menu": "main-menu"
         }
       }
