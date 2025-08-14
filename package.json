@@ -1,0 +1,24 @@
+{
+  "name": "ta-shopify-theme",
+  "version": "1.0.0",
+  "description": "Tracy Anderson's Shopify Theme",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"shopify theme dev\" \"npx tailwindcss -i ./src/tailwind.css -o ./assets/application.css --watch\"",
+    "tailwind": "tailwindcss -i ./src/tailwind.css -o ./assets/application.css --watch",
+    "build": "npx tailwindcss -i ./src/tailwind.css -o ./assets/application.css --minify",
+    "preview": "shopify theme pull && npm run build"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "tailwindcss"
+  ],
+  "author": "Utility NYC",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "concurrently": "^9.2.0",
+    "tailwindcss": "^4.1.12"
+  }
+}
