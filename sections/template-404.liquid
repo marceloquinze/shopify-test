@@ -1,6 +1,28 @@
-<h1>{{ section.settings.title }}</h1>
-<p>{{ section.settings.subtext_html }}</p>
+<div class="max-w-md">
+	<div class="text-5xl font-bold my-4">
+		{{ section.settings.title }}
+	</div>
+	<div class="my-4">
+		<p class="text-base md:text-xl leading-normal">{{ section.settings.subtext_html }}</p>
+	</div>
+	<div class="my-4">
+		{% liquid
+			if section.settings.button_url == blank
+				assign shop_url = shop.secure_url
+			else
+				assign shop_url = section.settings.button_url
+			endif
+		%}
+		<a href="{{ shop_url }}" class="px-4 inline-block py-2 text-base font-medium shadow bg-green-600 hover:bg-green-800 text-white rounded-md transition ease-in-out duration-500">
+			{{ section.settings.button_label }}
+		</a> 
+	</div>
+</div>
 
+<!--
+Este schema abaixo parece com as settings do WordPress, passando valores padrões.
+A diferença é que se eu altero o valor no admin para vazio, ele não volta ao padrão.
+-->
 {% schema %}
 	{
 		"name": "Template 404",
@@ -18,6 +40,17 @@
 				"id": "subtext_html",
 				"default": "The page you were looking for does not exist",
 				"label": "404 Subtext"
+			},
+			{
+				"type": "url",
+				"id": "button_url",
+				"label": "404 Link"
+			},
+			{
+				"type": "text",
+				"id": "button_label",
+				"default": "Back to Home",
+				"label": "404 Button Label"
 			}
 		]
 	}
