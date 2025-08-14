@@ -1,0 +1,29 @@
+{
+	// docs: https://shopify.dev/docs/storefronts/themes/architecture/templates/json-templates
+	"sections": {
+		"blog_template": {
+			"type": "template-article", // nome vem da pasta sections
+			"blocks": {
+				"title": {
+					"type": "article_title"
+				},
+				"author": {
+					"type": "article_author"
+				},
+				"published_date": {
+					"type": "article_published_date"
+				},
+				"image": {
+					"type": "featured_image"
+				},
+				"content": {
+					"type": "article_content"
+				},
+			},
+			// ordenação padrão
+			// pode mudar se o template apresentar os blocos dentro de um laço for
+			"block_order": ["title", "author", "published_date", "image", "content" ]
+		}
+	},
+	"order": ["blog_template"] // isso vem dali de cima: sections.template. "template" pode ter qualquer nome...
+}
