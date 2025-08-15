@@ -1,3 +1,4 @@
+{% assign pagination_buttons = "flex-1 items-center justify-center mx-auto max-w-4xl px-4 [&_span.page:not(.current)]:bg-red-900 [&_span.page:not(.current)]:text-white [&_span.page:not(.current)]:py-2 [&_span.page]:px-3 [&_span.page]:inline-block" %}
 <article class="py-8" itemscope itemtype="http://schema.org/BlogPosting">
 	{% # isso faz os blocos serem renderizados de forma dinamica %}
 	{% for block in section.blocks %}
@@ -42,7 +43,7 @@
 				</div>
 			{% when "article_content" %}
 				<div class="flex items-center justify-center">
-					<div itemprop="articleBody" class="max-w-4xl">
+					<div itemprop="articleBody" class="max-w-4xl leading-8 [&_p]:mb-4 [&_img]:w-screen">
 						{{ article.content }}
 					</div>
 				</div>
@@ -54,7 +55,7 @@
 {% if blog.comments_enabled? %}
 	<div id="comments" class="my-8">
 		{% if article.comments_count > 0 %}
-			<div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
+			<div class="{{ pagination_buttons }}">
 				<h1 class="text-lg mb-4 font-medium">See what people are saying</h1>
 				{% paginate article.comments by 5 %}
 					{% for comment in article.comments %}
@@ -71,7 +72,9 @@
 				{% endpaginate %}
 			</div>
 		{% else %}
-			There are no comments
+			<div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
+				<p>There are no comments</p>
+			</div>
 		{% endif %}
 	</div>
 

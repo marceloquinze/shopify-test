@@ -1,0 +1,59 @@
+<div class="list flex items-center justify-center">
+{% paginate blog.articles by section.settings.posts_to_display %}
+	{% for article in blog.articles %}
+		<div class="">
+			{% if article.image != blank %}
+				<img 
+				src="{{ article.image | img_url: 'medium' }}" 
+				alt="{{ article.image.alt | escape }}" 
+				width="{{ article.image.width }}" 
+				height="{{ article.image.height }}"
+				/>
+			{% else %}
+				{{ 'image' | placeholder_svg_tag: 'w-20' }}
+			{% endif %}
+
+			<h1>{{ article.title }}</h1>
+			{% if section.settings.display_author %}
+				<small>{{ article.author }}</small>
+			{% endif %}
+			{% if section.settings.display_author %}
+				<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'default' }}</time>
+			{% endif %}
+			{% if article.excerpt.size > 0 %}
+				<p>{{ article.excerpt | strip_html | truncatewords: 20 }}</p>
+			{% else %}
+				<p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+			{% endif %}
+		</div>
+	{% endfor %}
+{% endpaginate %}
+</div>
+{% schema %}
+	{
+		"name": "Blog List Settings",
+		"settings": [
+			{
+				"type": "range",
+				"id": "posts_to_display",
+				"label": "Number of posts to display",
+				"default": 3,
+				"step": 1,
+				"min": 1,
+				"max": 6,
+			},
+			{
+				"type": "checkbox",
+				"default": true,
+				"id": "display_author",
+				"label": "Display Author"
+			},
+			{
+				"type": "checkbox",
+				"default": true,
+				"id": "display_date",
+				"label": "Display Date"
+			},
+		]
+	}
+{% endschema %}
