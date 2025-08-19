@@ -1,0 +1,12 @@
+{
+	"sections": {
+		"featured-collection": {
+			"type": "featured-collection",
+			"settings": {
+				"featured_collection": "all"
+				// default, when user hasn't assign a collection on admin
+			}
+		}
+	},
+	"order": ["featured-collection"]
+}
