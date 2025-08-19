@@ -1,0 +1,30 @@
+{% #product_var comes from render %}
+<div class="w-full py-6 px-3">
+	<div class="border border-gray-200 bg-white shadow-lg rounded-lg overflow-hidden">
+		<a href="{{ product_var.url }}">
+			{% if product_var.featured_image %}
+				<div class="h-80 overflow-hidden">
+					<img 
+						src="{{ product_var.featured_image | img_url: 'medium' }}" 
+						alt="{{ product_var.title | escape }}" 
+						width="{{ product_var.featured_image.width }}" 
+						height="{{ product_var.featured_image.height }}"
+						class="w-full h-full object-cover transition duration-500 ease-in-out transform hover:scale-120"
+					>
+				</div>
+			{% else %}
+				<div class="h-80 overflow-hidden">
+					{{ 'product-2' | placeholder_svg_tag: 'w-full h-full object-cover bg-gray-100 transition duration-500 ease-in-out transform hover:scale-120' }}
+				</div>
+			{% endif %}
+		</a>
+		{% assign alignment = section.settings.card_alignment %}
+		<div class="flex flex-col p-4 text-{{ alignment }}">
+			{% if section.settings.display_vendor %}
+				<span class="text-sm text-gray-400">{{ product_var.vendor | link_to_vendor }}</span>
+			{% endif %}
+			<a class="text-gray-700 uppercase font-medium" href="{{ product_var.url }}">{{ product_var.title }}</a>
+			<p class="text-gray-500">{{ product_var.price | money }}</p>
+		</div>
+	</div>
+</div>
