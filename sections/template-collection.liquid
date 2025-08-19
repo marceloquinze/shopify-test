@@ -1,0 +1,59 @@
+<div class="px-4 py-8">
+	{% paginate collection.products by section.settings.products_per_page %}
+	
+			<h1 class="text-3xl text-center">{{ collection.title }}</h1>
+	
+			<div class="max-w-6xl mx-auto">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">	
+					{% for product in collection.products %}
+						{% render 'product-card', product_var: product %}
+					{% else %}
+						<p>There are no products inside of this collection</p>
+					{% endfor %}
+				</div>
+			</div>
+		{% render 'pagination', pagination: paginate %}
+	{% endpaginate %}
+</div>
+
+{% schema %}
+	{
+		"name": "Collection Settings",
+		"settings": [
+			{
+				"type": "range",
+				"default": 6,
+				"id": "products_per_page",
+				"label": "Products per page",
+				"max": 20,
+				"min": 1
+			},
+			{
+				"type": "checkbox",
+				"default": true,
+				"id": "display_vendor",
+				"label": "Display Vendor Name"
+			},
+			{
+				"type": "select",
+				"default": "left",
+				"id": "card_alignment",
+				"label": "Card Info Alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}
